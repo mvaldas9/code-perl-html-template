@@ -1,0 +1,137 @@
+{
+    "TMPL_V": {
+        "prefix": "TMPL_V",
+        "body": [
+            "<TMPL_V name>"
+        ],
+        "description": "Add a variable"
+    },
+    "TMPL_TRANS": {
+        "prefix": "TMPL_TRANS",
+        "body": [
+            "<TMPL_TRANS copy_tag>"
+        ],
+        "description": "Add a translation"
+    },
+    "TMPL_IF_ELSIF": {
+        "prefix": "TMPL_IF",
+        "body": [
+            "<TMPL_IF name>",
+            "\t",
+            "<TMPL_ELSIF name>",
+            "\t",
+            "<TMPL_ELSE>",
+            "\t",
+            "</TMPL_IF>"
+        ],
+        "description": "TMPL_IF with ELSIF and ELSE"
+    },
+    "TMPL_IF_ELSE": {
+        "prefix": "TMPL_IF",
+        "body": [
+            "<TMPL_IF name>",
+            "\t",
+            "<TMPL_ELSE>",
+            "\t",
+            "</TMPL_IF>"
+        ],
+        "description": "TMPL_IF with ELSE"
+    },
+    "TMPL_IF Condition": {
+        "prefix": "TMPL_IF",
+        "body": [
+            "<TMPL_IF name>",
+            "\t",
+            "</TMPL_IF>"
+        ],
+        "description": "Simple TMPL_IF"
+    },
+    "TMPL_UNLESS": {
+        "prefix": "TMPL_UNLESS",
+        "body": [
+            "<TMPL_UNLESS name>",
+            "\t",
+            "</TMPL_UNLESS>"
+        ],
+        "description": "TMPL_UNLESS"
+    },
+    "TMPL_CASE": {
+        "prefix": "TMPL_CASE",
+        "body": [
+            "<TMPL_CASE name>",
+            "\t<TMPL_WHEN \"value1\">",
+            "\t\t",
+            "\t<TMPL_WHEN \"value2\">",
+            "\t\t",
+            "\t<TMPL_OTHERWISE>",
+            "\t\t",
+            "</TMPL_CASE>"
+        ],
+        "description": "TMPL_CASE with 2 conditions"
+    },
+    "TMPL_INLINE": {
+        "prefix": "TMPL_INLINE",
+        "body": [
+            "<TMPL_INLINE name=\"BLOCK\">"
+        ],
+        "description": "Inlines the contents of a file when the template is compiled"
+    },
+    "TMPL_INCLUDE": {
+        "prefix": "TMPL_INCLUDE",
+        "body": [
+            "<TMPL_INCLUDE path >"
+        ],
+        "description": "Includes a file."
+    },
+    "TMPL_HELPER EXPORT": {
+        "prefix": "TMPL_HELPER",
+        "body": [
+            "<TMPL_HELPER export variable_name=[% b_variable %]>"
+        ],
+        "description": "TMPL_HELPER export"
+    },
+    "TMPL_URI": {
+        "prefix": "TMPL_URI",
+        "body": [
+            "<TMPL_URI b_url new_param='value' removed_param=''>"
+        ],
+        "description": "Given a url creates a valid url with param validation for SEO."
+    },
+    "TMPL_BLOCK": {
+        "prefix": "TMPL_BLOCK",
+        "body": [
+            "<TMPL_BLOCK block_name LOCAL_SCOPE>",
+            "\t",
+            "</TMPL_BLOCK>"
+        ],
+        "description": "Defines a reusable template block that can be inserted in the page using \"TMPL_INLINE\"."
+    },
+    "TMPL_MARKER": {
+        "prefix": "TMPL_MARKER",
+        "body": [
+            "<TMPL_MARKER START>",
+            "\t",
+            "<TMPL_MARKER END>"
+        ],
+        "description": "Conditionally generates a start of file/end of file comment, defaulting to HTML comments."
+    },
+    "TMPL_FOR": {
+        "prefix": "TMPL_FOR",
+        "body": [
+            "<TMPL_FOR item IN=name>",
+            "\t",
+            "</TMPL_FOR>"
+        ],
+        "description": "Loop over the items of an array."
+    },
+    "TMPL_COMMENT": {
+        "prefix": "TMPL_COMMENT",
+        "body": [
+            "<TMPL_COMMENT>",
+            "\t",
+            "</TMPL_COMMENT>"
+        ],
+        "description": "Anything inside it is ignored, nestable."
+    }
+    
+}
