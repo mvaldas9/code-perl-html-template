@@ -4,7 +4,7 @@
 	"description": "Perl HTML Template support",
 	"version": "1.1.5",
 	"publisher": "biamacedo",
-	"icon": "./images/icon128.png",
+	"icon": "images/icon128.png",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/biamacedo/code-perl-html-template.git"
