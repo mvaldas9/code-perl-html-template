@@ -22,11 +22,9 @@
 			"scopeName": "text.html.html-template",
 			"path": "./syntaxes/perl-html-template.tmLanguage"
 		}],
-		"snippets": [
-			{
-				"language": "perl-html-template",
-				"path": "./snippets/perl-html-template.json"
-			}
-		]
+		"snippets": [{
+			"language": "perl-html-template",
+			"path": "./snippets/perl-html-template.json"
+		}]
 	}
 }

@@ -2,23 +2,23 @@
     "TMPL_V": {
         "prefix": "TMPL_V",
         "body": [
-            "<TMPL_V name>"
+            "<TMPL_V ${1:name}>"
         ],
         "description": "Add a variable"
     },
     "TMPL_TRANS": {
         "prefix": "TMPL_TRANS",
         "body": [
-            "<TMPL_TRANS copy_tag>"
+            "<TMPL_TRANS ${1:copy_tag}>"
         ],
-        "description": "Add a translation"
+        "description": "Interpolate and translate a variable."
     },
     "TMPL_IF_ELSIF": {
         "prefix": "TMPL_IF",
         "body": [
-            "<TMPL_IF name>",
+            "<TMPL_IF ${1:condition}>",
             "\t",
-            "<TMPL_ELSIF name>",
+            "<TMPL_ELSIF ${2:condition}>",
             "\t",
             "<TMPL_ELSE>",
             "\t",
@@ -29,7 +29,7 @@
     "TMPL_IF_ELSE": {
         "prefix": "TMPL_IF",
         "body": [
-            "<TMPL_IF name>",
+            "<TMPL_IF ${1:condition}>",
             "\t",
             "<TMPL_ELSE>",
             "\t",
@@ -40,7 +40,7 @@
     "TMPL_IF Condition": {
         "prefix": "TMPL_IF",
         "body": [
-            "<TMPL_IF name>",
+            "<TMPL_IF ${1:condition}>",
             "\t",
             "</TMPL_IF>"
         ],
@@ -49,7 +49,7 @@
     "TMPL_UNLESS": {
         "prefix": "TMPL_UNLESS",
         "body": [
-            "<TMPL_UNLESS name>",
+            "<TMPL_UNLESS ${1:condition}>",
             "\t",
             "</TMPL_UNLESS>"
         ],
@@ -58,10 +58,10 @@
     "TMPL_CASE": {
         "prefix": "TMPL_CASE",
         "body": [
-            "<TMPL_CASE name>",
-            "\t<TMPL_WHEN \"value1\">",
+            "<TMPL_CASE ${1:name}>",
+            "\t<TMPL_WHEN \"${2:value}\">",
             "\t\t",
-            "\t<TMPL_WHEN \"value2\">",
+            "\t<TMPL_WHEN \"${3:value}\">",
             "\t\t",
             "\t<TMPL_OTHERWISE>",
             "\t\t",
@@ -72,35 +72,42 @@
     "TMPL_INLINE": {
         "prefix": "TMPL_INLINE",
         "body": [
-            "<TMPL_INLINE name=\"BLOCK\">"
+            "<TMPL_INLINE name=\"${1:BLOCK}\">"
         ],
         "description": "Inlines the contents of a file when the template is compiled"
     },
     "TMPL_INCLUDE": {
         "prefix": "TMPL_INCLUDE",
         "body": [
-            "<TMPL_INCLUDE path >"
+            "<TMPL_INCLUDE ${1:path} >"
         ],
         "description": "Includes a file."
     },
     "TMPL_HELPER EXPORT": {
         "prefix": "TMPL_HELPER",
         "body": [
-            "<TMPL_HELPER export variable_name=[% b_variable %]>"
+            "<TMPL_HELPER export ${1:variable_name}=[% ${2:b_variable} %]>"
         ],
         "description": "TMPL_HELPER export"
+    },
+    "TMPL_HELPER": {
+        "prefix": "TMPL_HELPER",
+        "body": [
+            "<TMPL_HELPER ${1:function} ${2:variable_name}=[% ${3:b_variable} %]>"
+        ],
+        "description": "Provides a way to call user-defined functions using named parameter syntax."
     },
     "TMPL_URI": {
         "prefix": "TMPL_URI",
         "body": [
-            "<TMPL_URI b_url new_param='value' removed_param=''>"
+            "<TMPL_URI ${1:b_url} ${2:new_param}=${3:value}>"
         ],
         "description": "Given a url creates a valid url with param validation for SEO."
     },
     "TMPL_BLOCK": {
         "prefix": "TMPL_BLOCK",
         "body": [
-            "<TMPL_BLOCK block_name LOCAL_SCOPE>",
+            "<TMPL_BLOCK ${1:block_name} LOCAL_SCOPE>",
             "\t",
             "</TMPL_BLOCK>"
         ],
@@ -118,8 +125,8 @@
     "TMPL_FOR": {
         "prefix": "TMPL_FOR",
         "body": [
-            "<TMPL_FOR item IN=name>",
-            "\t",
+            "<TMPL_FOR ${1:item} IN=${2:name}>",
+            "\t${3:code}",
             "</TMPL_FOR>"
         ],
         "description": "Loop over the items of an array."
@@ -128,10 +135,58 @@
         "prefix": "TMPL_COMMENT",
         "body": [
             "<TMPL_COMMENT>",
-            "\t",
+            "\t${1:comment}",
             "</TMPL_COMMENT>"
         ],
         "description": "Anything inside it is ignored, nestable."
+    },
+    "TMPL_DATE": {
+        "prefix": "TMPL_DATE",
+        "body": [
+            "<TMPL_DATE value=${1:date_value} format=\"${2:date_format}\">"
+        ],
+        "description": "Formats a date."
+    },
+    "TMPL_PROVIDE_CLIENT_DATA": {
+        "prefix": "TMPL_PROVIDE_CLIENT_DATA",
+        "body": [
+            "<TMPL_PROVIDE_CLIENT_DATA ${1:path}>"
+        ],
+        "description": "Parses the provided file/block collecting the list of used variables/translations but it does not emit any template code."
+    },
+    "TMPL_STATIC_URL": {
+        "prefix": "TMPL_STATIC_URL",
+        "body": [
+            "<TMPL_STATIC_URL ${1:path}>"
+        ],
+        "description": "Resolve a template static url according to various page characteristics."
+    },
+    "TMPL_WS": {
+        "prefix": "TMPL_WS",
+        "body": [
+            "<TMPL_WS ${1:mode}>",
+            "\t",
+            "</TMPL_WS>"
+        ],
+        "description": "Control whitespace in the enclosed block. The mode is a set of flags that can be combined."
+    },
+    "TMPL_ASSIGN": {
+        "prefix": "TMPL_ASSIGN",
+        "body": [
+            "<TMPL_ASSIGN ${1:name} ${2:value}>",
+            "\t",
+            "</TMPL_WS>"
+        ],
+        "description": "Sets the variable specified by \"name\" (either specified literally, or via Perl code), to the value of the variable specified by \"value\" or the result of a Perl expression."
+    },
+    "TMPL_SETVAR": {
+        "prefix": "TMPL_SETVAR",
+        "body": [
+            "<TMPL_SETVAR ${1:name}>",
+            "\t",
+            "</TMPL_SETVAR>"
+        ],
+        "description": "Assigns the contents of the tags to the given variable name."
     }
-    
+
 }
