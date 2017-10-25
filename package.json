@@ -2,8 +2,17 @@
 	"name": "perl-html-template",
 	"displayName": "Perl HTML Template",
 	"description": "Perl HTML Template support",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"publisher": "biamacedo",
+	"icon": "./images/icon128.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/biamacedo/code-perl-html-template.git"
+	},
+	"galleryBanner": {
+		"color": "#ededed",
+		"theme": "light"
+	},
 	"engines": {
 		"vscode": "^0.10.6"
 	},
