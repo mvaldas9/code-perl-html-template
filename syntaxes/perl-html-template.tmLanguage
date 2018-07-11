@@ -18,6 +18,12 @@
 	<key>patterns</key>
 	<array>
 		<dict>
+			<key>match</key>
+			<string>(^|\s)##(.*)</string>
+			<key>name</key>
+			<string>comment.line.double-slash</string>
+		</dict>
+		<dict>
 			<key>begin</key>
 			<string>(&lt;)(TMPL_COMMENT)(&gt;)</string>
 			<key>captures</key>
