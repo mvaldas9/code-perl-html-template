@@ -2,7 +2,7 @@
 	"name": "perl-html-template",
 	"displayName": "Perl HTML Template",
 	"description": "Perl HTML Template support",
-	"version": "1.1.5",
+	"version": "1.1.6",
 	"publisher": "biamacedo",
 	"icon": "images/icon128.png",
 	"repository": {
