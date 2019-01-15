@@ -2,7 +2,7 @@
 	"name": "perl-html-template",
 	"displayName": "Perl HTML Template",
 	"description": "Perl HTML Template support",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"publisher": "biamacedo",
 	"icon": "images/icon128.png",
 	"repository": {
@@ -29,7 +29,7 @@
 		"grammars": [{
 			"language": "perl-html-template",
 			"scopeName": "text.html.html-template",
-			"path": "./syntaxes/perl-html-template.tmLanguage"
+			"path": "./syntaxes/perl-html-template.json"
 		}],
 		"snippets": [{
 			"language": "perl-html-template",

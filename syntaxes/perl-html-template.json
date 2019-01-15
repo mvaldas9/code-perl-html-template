@@ -1,0 +1,309 @@
+{
+  "fileTypes": [
+    "tmpl",
+    "inc"
+  ],
+  "foldingStartMarker": "<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\\b.*?>|<!--(?!.*--\\s*>)|^<!--\\ \\#tminclude\\ (?>.*?-->)$|<\\?(?:php)?.*\\b(if|for(each)?|while)\\b.+:|\\{\\{?(if|foreach|capture|literal|foreach|php|section|strip)|\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/))))",
+  "foldingStopMarker": "(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)>|^(?!.*?<!--).*?--\\s*>|^<!--\\ end\\ tminclude\\ -->$|<\\?(?:php)?.*\\bend(if|for(each)?|while)\\b|\\{\\{?/(if|foreach|capture|literal|foreach|php|section|strip)|^[^{]*\\})",
+  "name": "HTML Templates",
+  "patterns": [
+    {
+      "include": "#tmpl-comment-tag"
+    },
+    {
+      "include": "#tmpl-comment-line"
+    },
+    {
+      "include": "#tmpl-tags"
+    },
+    {
+      "include": "text.html.basic"
+    }
+  ],
+  "repository": {
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b",
+          "name": "constant.numeric.tmpl"
+        }
+      ]
+    },
+    "string-double-quoted": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.tmpl"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.tmpl"
+        }
+      },
+      "name": "string.quoted.double.html"
+    },
+    "string-single-quoted": {
+      "begin": "'",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.tmpl"
+        }
+      },
+      "end": "'",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.tmpl"
+        }
+      },
+      "name": "string.quoted.single.html"
+    },
+    "tag-perl-attribute": {
+      "match": "\\b([a-zA-Z:-]{1,})(?==)",
+      "name": "entity.other.attribute-name.html"
+    },
+    "tag-perl-generic-attribute": {
+      "match": "(?<=[^=])\\b([a-zA-Z0-9_]+)",
+      "name": "entity.other.attribute-name.html"
+    },
+    "tag-perl-attribute-value": {
+      "match": "(\\=)(\\w*)",
+      "captures": {
+        "2": {
+          "name": "variable.other.predefined.perl"
+        }
+      }
+    },
+    "tag-perl-expression-method": {
+      "match": "\\b[a-zA-Z0-9-_]+(?=\\(.*\\))",
+      "name": "entity.name.function.perl.expression.tmpl"
+    },
+    "tag-perl-expression": {
+      "begin": "\\[%",
+      "beginCaptures": {
+        "0": {
+          "name": "keyword.perl.expression.start.tmpl"
+        }
+      },
+      "end": "%\\]",
+      "endCaptures": {
+        "0": {
+          "name": "keyword.perl.expression.end.tmpl"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#tag-perl-keyword"
+        },
+        {
+          "include": "#tag-perl-variable"
+        },
+        {
+          "include": "#tag-perl-expression-method"
+        },
+        {
+          "include": "#string-double-quoted"
+        },
+        {
+          "include": "#string-single-quoted"
+        },
+        {
+          "include": "#numbers"
+        }
+      ]
+    },
+    "tag-perl-keyword": {
+      "match": "(\\s+(eq|ne|or|and|not)|=~|&&|==|\\|\\||!~|<=?|[^-]>=?)",
+      "name": "keyword.perl.expression.tmpl"
+    },
+    "tag-perl-variable": {
+      "patterns": [
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)&(?![A-Za-z0-9_])",
+          "name": "variable.other.regexp.match.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)`(?![A-Za-z0-9_])",
+          "name": "variable.other.regexp.pre-match.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)'(?![A-Za-z0-9_])",
+          "name": "variable.other.regexp.post-match.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)\\+(?![A-Za-z0-9_])",
+          "name": "variable.other.regexp.last-paren-match.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)\"(?![A-Za-z0-9_])",
+          "name": "variable.other.readwrite.list-separator.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)0(?![A-Za-z0-9_])",
+          "name": "variable.other.predefined.program-name.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)[_ab\\*\\.\\/\\|,\\\\;#%=\\-~^:?!\\$<>\\(\\)\\[\\]@](?![A-Za-z0-9_])",
+          "name": "variable.other.predefined.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$)[0-9]+(?![A-Za-z0-9_])",
+          "name": "variable.other.subpattern.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "([\\$\\@\\%](#)?)([_a-zA-Zx7f-xff\\$]|::)([a-zA-Z0-9_x7f-xff\\$]|::)*\\b",
+          "name": "variable.other.readwrite.global.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            },
+            "2": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "(\\$\\{)(?:[a-zA-Zx7f-xff\\$]|::)(?:[a-zA-Z0-9_x7f-xff\\$]|::)*(\\})",
+          "name": "variable.other.readwrite.global.perl"
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.perl"
+            }
+          },
+          "match": "([\\$\\@\\%](#)?)[0-9_]\\b",
+          "name": "variable.other.readwrite.global.special.perl"
+        }
+      ]
+    },
+    "tag-perl-options": {
+      "match": "\\b([A-Z_]{1,})",
+      "name": "entity.other.attribute-name.html"
+    },
+    "tag-perl-url": {
+      "match": "(\\b\\w*[:/.-]\\w*)\\b",
+      "name": "string.quoted.double.html"
+    },
+    "tmpl-tags": {
+      "begin": "(</?)(TMPL_(?i:[a-zA-Z_]+)\\b)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.begin.html"
+        },
+        "2": {
+          "name": "entity.name.tag.block.any.html"
+        }
+      },
+      "end": "(>)",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.tag.end.html"
+        }
+      },
+      "name": "meta.tag.block.any.tmpl",
+      "patterns": [
+        {
+          "include": "#tmpl-tag-stuff"
+        }
+      ]
+    },
+    "tmpl-tag-stuff": {
+      "patterns": [
+        {
+          "include": "#tag-perl-attribute"
+        },
+        {
+          "include": "#tag-perl-attribute-value"
+        },
+        {
+          "include": "#string-single-quoted"
+        },
+        {
+          "include": "#string-double-quoted"
+        },
+        {
+          "include": "#tag-perl-options"
+        },
+        {
+          "include": "#tag-perl-expression"
+        },
+        {
+          "include": "#tag-perl-url"
+        },
+        {
+          "include": "#tag-perl-generic-attribute"
+        },
+        {
+          "include": "#tmpl-comment-line"
+        }
+      ]
+    },
+    "tmpl-comment-tag": {
+      "begin": "(<)(TMPL_COMMENT)(>)",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.begin.tmpl"
+        }
+      },
+      "end": "(</)(TMPL_COMMENT)(>)",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.comment.end.tmpl"
+        }
+      },
+      "name": "comment.block.tmpl"
+    },
+    "tmpl-comment-line": {
+      "match": "##.*",
+      "name": "comment.block.html"
+    }
+  },
+  "scopeName": "text.html.html-template"
+}

@@ -46,15 +46,6 @@
         ],
         "description": "Simple TMPL_IF"
     },
-    "TMPL_UNLESS": {
-        "prefix": "TMPL_UNLESS",
-        "body": [
-            "<TMPL_UNLESS ${1:condition}>",
-            "\t",
-            "</TMPL_UNLESS>"
-        ],
-        "description": "TMPL_UNLESS"
-    },
     "TMPL_CASE": {
         "prefix": "TMPL_CASE",
         "body": [
@@ -173,9 +164,7 @@
     "TMPL_ASSIGN": {
         "prefix": "TMPL_ASSIGN",
         "body": [
-            "<TMPL_ASSIGN ${1:name} ${2:value}>",
-            "\t",
-            "</TMPL_WS>"
+            "<TMPL_ASSIGN ${1:name} ${2:value}>"
         ],
         "description": "Sets the variable specified by \"name\" (either specified literally, or via Perl code), to the value of the variable specified by \"value\" or the result of a Perl expression."
     },
@@ -188,5 +177,4 @@
         ],
         "description": "Assigns the contents of the tags to the given variable name."
     }
-
 }
