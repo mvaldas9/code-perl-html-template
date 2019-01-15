@@ -110,6 +110,9 @@
         },
         {
           "include": "#numbers"
+        },
+        {
+          "include": "#tmpl-comment-line"
         }
       ]
     },
