@@ -13,18 +13,14 @@
         ],
         "description": "Interpolate and translate a variable."
     },
-    "TMPL_IF_ELSIF": {
+    "TMPL_IF": {
         "prefix": "TMPL_IF",
         "body": [
             "<TMPL_IF ${1:condition}>",
             "\t",
-            "<TMPL_ELSIF ${2:condition}>",
-            "\t",
-            "<TMPL_ELSE>",
-            "\t",
             "</TMPL_IF>"
         ],
-        "description": "TMPL_IF with ELSIF and ELSE"
+        "description": "Simple TMPL_IF"
     },
     "TMPL_IF_ELSE": {
         "prefix": "TMPL_IF",
@@ -37,14 +33,18 @@
         ],
         "description": "TMPL_IF with ELSE"
     },
-    "TMPL_IF Condition": {
+    "TMPL_IF_ELSIF": {
         "prefix": "TMPL_IF",
         "body": [
             "<TMPL_IF ${1:condition}>",
             "\t",
+            "<TMPL_ELSIF ${2:condition}>",
+            "\t",
+            "<TMPL_ELSE>",
+            "\t",
             "</TMPL_IF>"
         ],
-        "description": "Simple TMPL_IF"
+        "description": "TMPL_IF with ELSIF and ELSE"
     },
     "TMPL_CASE": {
         "prefix": "TMPL_CASE",
